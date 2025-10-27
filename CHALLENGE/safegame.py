@@ -1,37 +1,38 @@
 import random
 
-password = [random.randint(0, 9) for _ in range(4)]
+password = [random.randint(0,9) for _ in range(4)]
 
-def open_safe():
-    max_attempts = 10
-    attempts = 0
+def safegame():
+    maxattempts=10
+    attempts=0
 
-    print("Welcome to the digital safe!")
-    print("Try to guess the 4-digit password. Each number is between 0 and 9.")
-    
-    while attempts < max_attempts:
-        user_input = input(f"\nAttempt {attempts + 1}: Enter 4 numbers separated by spaces: ")
-        guess = user_input.split()
+    print("welcome to the safe game!")
+    print("guess the 4 digit password, you have 10 tries. Each number is between 0 and 9.")
+    print(password)
 
-        if len(guess) != 4 or not all(num.isdigit() and 0 <= int(num) <= 9 for num in guess):
-            print("Invalid! Please enter 4 numbers between 0 and 9 with spaces in between them.")
+    while attempts<maxattempts:
+        inp=input(f"\n attempt: {attempts+1} enter 4 numbers seperated by spaces:")
+        guess=inp.split()
+
+        if len(guess)!=4 or not all (num.isdigit() and 0 <= int(num)<=9 for num in guess):
+            print("invalid! enter 4 numbers between 0 and 9 with spaces in between them.")
             continue
 
-        guess = [int(num) for num in guess]
-        attempts += 1
+        guess=[int(num) for num in guess]
+        attempts+=1
 
-        correct = [guess[i] if guess[i] == password[i] else None for i in range(4)]
+        correct=[guess[i]if guess[i] == password [i] else None for i in range(4)]
 
-        if correct == password:
-            print(f"Congrats! You cracked the safe. The password was {password}.")
+        if correct==password:
+            print(f"nice, you cracked the safe. The password was {password}.")
             return
         else:
             if all(num is None for num in correct):
-                print("No numbers are correct in their positions.")
+                print("no numbers in their right positions")
             else:
                 hint = [str(num) if num is not None else "*" for num in correct]
-                print("Numbers correct and in the right position:", " ".join(hint))
+                print("numbers correct in the right position:"," ".join(hint))
 
-    print(f"Game over. You've used all 10 attempts. The password was {password}.")
+    print(f"game over, the password was {password}")
 
-open_safe()
+safegame()
