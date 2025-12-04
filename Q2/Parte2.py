@@ -1,6 +1,6 @@
 # OBRIGATÓRIO PREENCHER:
 
-# NUMEO ALUNO: 40250183
+# NUMERO ALUNO: 40250183
 # NOME: Inês Santos
 
 import random
@@ -88,10 +88,13 @@ def play():                                                 #função do jogo
         terminar=True                                       #perder o jogo                        
 
 #------------------- TABLE BOARD GAME -------------------#
-fillBoard()
+
+fillBoard()                                                 #inicio do código, mostra board vazio com 0s
 printBoard()
+
 terminar=False
 moves=0
+
 while not terminar:
     play()
 
